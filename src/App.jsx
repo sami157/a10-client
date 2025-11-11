@@ -2,6 +2,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { Outlet } from 'react-router'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <Navbar/>
       <Outlet/>
       <Footer/>
+      <Toaster/>
     </>
   )
 }

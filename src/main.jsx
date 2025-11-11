@@ -4,9 +4,10 @@ import './index.css';
 import App from './App.jsx';
 import FindPartners from './pages/FindPartners';
 import Login from './pages/Login';
-import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import AuthProvider from './provider/AuthProvider.jsx';
+import Signup from './pages/Signup.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register />,
+        element: <Signup />,
       },
     ],
   },
@@ -37,6 +38,8 @@ const root = createRoot(document.getElementById('root'));
 
 root.render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
