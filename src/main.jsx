@@ -6,10 +6,11 @@ import FindPartners from './pages/FindPartners';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import AuthProvider from './provider/AuthProvider.jsx';
+import AuthProvider, { AuthContext } from './provider/AuthProvider.jsx';
 import Signup from './pages/Signup.jsx';
-import Profile from './pages/Profile.jsx'
 import PartnerProfile from './pages/PartnerProfile.jsx';
+import UserProfile from './pages/UserProfile.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -30,11 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />
+        element: <UserProfile />
       },
       {
         path: '/partner-profile',
-        element: <PartnerProfile />
+        element: <PartnerProfile />,       
       }
     ],
   },
