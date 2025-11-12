@@ -58,7 +58,8 @@ const PartnerProfileForm = () => {
                         <select name='studyMode' required className="select w-full border-0 rounded-lg">
                             <option disabled={true}>Study Mode</option>
                             <option>Online</option>
-                            <option>Offline</option>
+                            <option>In-Person</option>
+                            <option>Hybrid</option>
                         </select>
                         <label className="label">Availability Time</label>
                         <input name='time' required type='text' className="input w-full border-0 rounded-lg" placeholder="" />

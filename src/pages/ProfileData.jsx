@@ -1,15 +1,17 @@
 import React from 'react';
+import { useLoaderData } from 'react-router'
 
 const ProfileData = ({ profile }) => {
-    console.log(profile)
+    const loaderData = useLoaderData()
+    const data = profile || loaderData
     return (
         <div className='flex justify-center min-h-screen'>
             <div>
-                <p>{profile.name}</p>
-                <p>{profile.email}</p>
-                <p>{profile.time}</p>
-                <p>{profile.xpLevel}</p>
-                <p>{profile.location}</p>
+                <p>{data.name}</p>
+                <p>{data.email}</p>
+                <p>{data.time}</p>
+                <p>{data.xpLevel}</p>
+                <p>{data.location}</p>
             </div>
         </div>
     );

@@ -36,12 +36,6 @@ const AuthProvider = ({ children }) => {
 
     const signOutUser = () => {
         return signOut(auth)
-            .then(
-                
-            )
-            .catch((error) => {
-                setErrorMessage(error.message)
-            });
     }
 
     const updateUserProfile = (name, image) => {

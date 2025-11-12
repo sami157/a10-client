@@ -10,6 +10,9 @@ import AuthProvider, { AuthContext } from './provider/AuthProvider.jsx';
 import Signup from './pages/Signup.jsx';
 import PartnerProfile from './pages/PartnerProfile.jsx';
 import UserProfile from './pages/UserProfile.jsx';
+import Home from './pages/Home.jsx';
+import axios from 'axios';
+import ProfileData from './pages/ProfileData.jsx';
 
 
 const router = createBrowserRouter([
@@ -17,6 +20,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+        loader: () => axios.get('http://localhost:3000/study-partners/top')
+      },
       {
         path: "/find-partners",
         element: <FindPartners />,
@@ -35,8 +43,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/partner-profile',
-        element: <PartnerProfile />,       
-      }
+        element: <PartnerProfile />,
+      },
+      {
+        path: '/partner-profile/:id',
+        element: <ProfileData />,
+        loader: async({params}) => {
+          const res = await axios.get(`http://localhost:3000/study-partners/find/${params.id}`);
+          return res.data;
+        }
+      },
+
     ],
   },
   {

@@ -8,7 +8,9 @@ const UserProfile = () => {
     const {user, loading} = use(AuthContext)
     return (
         loading ? <ProfileSkeleton/> :
-        <div>
+        user ? 
+        (
+            <div>
             <div className='flex flex-col gap-6 h-screen my-20'>
                 <p className='text-[50px] text-center title-font'>User Profile</p>
                 <div className='flex flex-col gap-5 items-center mx-auto p-10 duration-500 ease-in-out justify-center rounded-xl bg-white/35 backdrop-blur-xl'>
@@ -28,6 +30,7 @@ const UserProfile = () => {
                 </div>
             </div>
         </div>
+        ) : null
     );
 };
 
