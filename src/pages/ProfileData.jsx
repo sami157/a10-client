@@ -5,11 +5,11 @@ const ProfileData = ({ profile }) => {
     return (
         <div className='flex justify-center min-h-screen'>
             <div>
-                <p>{profile.data.name}</p>
-                <p>{profile.data.email}</p>
-                <p>{profile.data.time}</p>
-                <p>{profile.data.xpLevel}</p>
-                <p>{profile.data.location}</p>
+                <p>{profile.name}</p>
+                <p>{profile.email}</p>
+                <p>{profile.time}</p>
+                <p>{profile.xpLevel}</p>
+                <p>{profile.location}</p>
             </div>
         </div>
     );

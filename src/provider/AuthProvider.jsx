@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, updateProfile } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import { GoogleAuthProvider } from "firebase/auth";
 
@@ -43,6 +43,16 @@ const AuthProvider = ({ children }) => {
                 setErrorMessage(error.message)
             });
     }
+
+    const updateUserProfile = (name, image) => {
+        if (name || image) {
+            return updateProfile(authData.auth.currentUser, {
+                displayName: name && name,
+                photoURL: image && image
+            })
+        }
+        else return Promise.reject()
+    }
     
     const authData = {
         auth,
@@ -53,7 +63,8 @@ const AuthProvider = ({ children }) => {
         signInUser,
         signOutUser,
         setErrorMessage,
-        errorMessage
+        errorMessage,
+        updateUserProfile
     }
     return (
         <AuthContext value={authData}>
