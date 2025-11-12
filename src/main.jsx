@@ -8,6 +8,8 @@ import NotFound from './pages/NotFound';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import AuthProvider from './provider/AuthProvider.jsx';
 import Signup from './pages/Signup.jsx';
+import Profile from './pages/Profile.jsx'
+import PartnerProfile from './pages/PartnerProfile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Signup />,
       },
+      {
+        path: "/profile",
+        element: <Profile />
+      },
+      {
+        path: '/partner-profile',
+        element: <PartnerProfile />
+      }
     ],
   },
   {

@@ -9,17 +9,17 @@ const auth = getAuth(app);
 export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+            setUser(currentUser)
             setLoading(false);
             setErrorMessage('')
         });
         return () => unsubscribe();
-    }, []);
+    }, [user]);
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)

@@ -60,7 +60,7 @@ const Login = () => {
                     <Link state={email} to='/forgot-password'><p className="link link-hover">Forgot password?</p></Link>
                     <button type='submit' className="btn btn-neutral text-white bg-none mt-3 rounded-lg shadow-none">Login</button>
                     <p className='text-red-400'>{errorMessage ? errorMessage : ''}</p>
-                    <p>Don't have an account? <Link className='font-bold' to='/signup'>Register</Link></p>
+                    <p>Don't have an account? <Link className='font-bold' to='/register'>Register</Link></p>
                 </form>
             </div>
         </div>
