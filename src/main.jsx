@@ -13,6 +13,7 @@ import UserProfile from './pages/UserProfile.jsx';
 import Home from './pages/Home.jsx';
 import axios from 'axios';
 import ProfileData from './pages/ProfileData.jsx';
+import MyConnections from './pages/MyConnections.jsx';
 
 
 const router = createBrowserRouter([
@@ -49,12 +50,19 @@ const router = createBrowserRouter([
       {
         path: '/partner-profile/:id',
         element: <ProfileData />,
-        loader: async({params}) => {
+        loader: async ({ params }) => {
           const res = await axios.get(`http://localhost:3000/study-partners/find/${params.id}`);
           return res.data;
-        }
+        },
       },
-
+      {
+        path: '/my-connections/:email',
+        element: <MyConnections/>,
+        loader: async ({params}) => {
+          const res = await axios.get(`http://localhost:3000/partner-requests/sent/${params.email}`)
+          return res.data
+        }
+      }
     ],
   },
   {

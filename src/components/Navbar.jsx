@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className='flex gap-4 items-center'>
         {user ? <UserAvatar small={true}></UserAvatar> : null}
         {user ? <NavLink to='/partner-profile'>My Partner Profile</NavLink> : <NavLink className='btn-ghost' to='/register'>Register</NavLink>}
-        {user ? <p>My Connections</p> :<NavLink className='btn-ghost' to='/login'>Login</NavLink>}
+        {user ? <NavLink to={`/my-connections/${user.email}`}>My Connections</NavLink> :<NavLink className='btn-ghost' to='/login'>Login</NavLink>}
       </div>
     </div>
   )
