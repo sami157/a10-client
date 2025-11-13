@@ -7,6 +7,7 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const MyConnections = () => {
     const myRequests = useLoaderData();
+    const [requests, setRequests] = useState(myRequests)
     const { user, loading } = use(AuthContext)
     const [profiles, setProfiles] = useState([]);
     const [message, setMessage] = useState('')
@@ -18,23 +19,41 @@ const MyConnections = () => {
                 message
             });
             toast.success("Message updated!");
-            console.log(res)
             return res.data;
         } catch (error) {
             toast.error(error.response?.data?.message || "Failed to update message");
         }
+    }
+    const deleteRequest = async (senderEmail, receiverId) => {
+        try {
+            await axios.delete("http://localhost:3000/partner-requests", {
+                data: {
+                    senderEmail,
+                    receiverId
+                }
+            });
+            toast.success("Request deleted");
+            setRequests(
+                requests.filter(req =>
+                    !(req.senderEmail === senderEmail && req.receiverId === receiverId)
+                )
+            );
+        } catch (err) {
+            toast.error(err.response?.data?.message || "Delete failed");
+        }
     };
 
 
+
     useEffect(() => {
-        if (!Array.isArray(myRequests) || myRequests.length === 0) {
+        if (!Array.isArray(requests) || requests.length === 0) {
             setProfiles([]);
             return;
         }
 
         (async () => {
             const results = await Promise.all(
-                myRequests.map((r) =>
+                requests.map((r) =>
                     axios
                         .get(`http://localhost:3000/study-partners/find/${r.receiverId}`)
                         .then(res => res.data)
@@ -43,7 +62,7 @@ const MyConnections = () => {
             setProfiles(results);
         }
         )();
-    }, [myRequests]);
+    }, [requests]);
     return (
         <div className="overflow-x-auto w-10/12 mx-auto">
             <table className="table">
@@ -99,25 +118,31 @@ const MyConnections = () => {
                             {/* Action */}
                             <th className='flex gap-4'>
                                 <button className="btn btn-primary rounded-full" onClick={() => document.getElementById('message_modal_edit').showModal()}>Edit</button>
-                                {loading || (<dialog id="message_modal_edit" className="modal">
-                                    <div className="modal-box">
-                                        <h3 className="font-bold text-lg">Edit Message</h3>
-                                        <p className="py-4">Click the Done button below to confirm, or Esc to cancel</p>
-                                        <div className="">
-                                            <form className='flex flex-col gap-2' method="dialog" onSubmit={() => editMessage(user.email, p._id, message)}>
-                                                <textarea
-                                                    className="textarea textarea-bordered w-full"
-                                                    rows={4}
-                                                    placeholder="Write something"
-                                                    value={message}
-                                                    onChange={(e) => setMessage(e.target.value)}
-                                                />
-                                                <button type='submit' className="btn mx-auto">Done</button>
-                                            </form>
+                                {
+                                    loading || (
+                                        <div>
+                                            <dialog id="message_modal_edit" className="modal">
+                                                <div className="modal-box">
+                                                    <h3 className="font-bold text-lg">Edit Message</h3>
+                                                    <p className="py-4">Click the Done button below to confirm, or Esc to cancel</p>
+                                                    <div className="">
+                                                        <form className='flex flex-col gap-2' method="dialog" onSubmit={() => editMessage(user.email, p._id, message)}>
+                                                            <textarea
+                                                                className="textarea textarea-bordered w-full"
+                                                                rows={4}
+                                                                placeholder="Write something"
+                                                                value={message}
+                                                                onChange={(e) => setMessage(e.target.value)}
+                                                            />
+                                                            <button type='submit' className="btn mx-auto">Done</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </dialog>
+                                            <button onClick={() => deleteRequest(user.email, p._id)} className="btn btn-error btn-md rounded-full">Delete</button>
                                         </div>
-                                    </div>
-                                </dialog>)}
-                                <button className="btn btn-error btn-md rounded-full">Delete</button>
+                                    )
+                                }
                             </th>
                         </tr>
                     ))}

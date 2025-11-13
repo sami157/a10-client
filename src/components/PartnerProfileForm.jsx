@@ -14,6 +14,7 @@ const PartnerProfileForm = () => {
             email: form.email.value,
             name: form.name.value,
             photoURL: form.photoURL.value,
+            subject: form.subject.value,
             studyMode: form.studyMode.value,
             time: form.time.value,
             location: form.location.value,
@@ -52,7 +53,9 @@ const PartnerProfileForm = () => {
                             <option>Physics</option>
                             <option>Chemistry</option>
                             <option>Biology</option>
-                            <option>ICT</option>
+                            <option>Socail Science</option>
+                            <option>Programming</option>
+                            <option>Geography</option>
                         </select>
                         <label className="label">Study Mode</label>
                         <select name='studyMode' required className="select w-full border-0 rounded-lg">

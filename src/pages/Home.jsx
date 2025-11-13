@@ -11,7 +11,7 @@ const Home = () => {
                 {
                     topProfiles.map(
                         (profile) => (
-                            <div>
+                            <div key={profile._id}>
                                 <p>{profile.name}</p>
                                 <NavLink to={`/partner-profile/${profile._id}`}><p className='hover:bg-gray-100'>View Profile</p></NavLink>
                             </div>
