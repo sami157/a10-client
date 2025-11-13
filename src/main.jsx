@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/find-partners",
         element: <FindPartners />,
+        loader: () => axios.get('http://localhost:3000/study-partners')
       },
       {
         path: "/login",

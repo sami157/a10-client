@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className='flex gap-4 items-center'>
         <NavLink to='/'><img className='h-15' src={logo} alt="" /></NavLink>
         <NavLink to='/'>Home</NavLink>
-        <NavLink to='/'>Find Partners</NavLink>
+        <NavLink to='/find-partners'>Find Partners</NavLink>
       </div>
       <div className='flex gap-4 items-center'>
         {user ? <UserAvatar small={true}></UserAvatar> : null}

@@ -1,9 +1,17 @@
 import React from 'react'
+import { useLoaderData } from 'react-router'
 
 const FindPartners = () => {
+  const dataArray = useLoaderData().data
   return (
     <div>
-      Find Partners
+      {
+        dataArray.map(
+          (data) => (
+            <p>{data.name}</p>
+        )
+        )
+      }
     </div>
   )
 }
