@@ -16,9 +16,8 @@ const ProfileData = ({ profile }) => {
                 receiverId: data._id
             }
         )
-        .then((res) => {
+        .then(() => {
                 toast.success('Partner Request sent successfully')
-                console.log(res)
             }
         )
         .catch((error)=> {
