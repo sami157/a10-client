@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/partner-profile/:id',
-        element: <ProfileData />,
+        element: <PrivateRoute><ProfileData /></PrivateRoute>,
         loader: async ({ params }) => {
           const res = await axios.get(`http://localhost:3000/study-partners/find/${params.id}`);
           return res.data;
