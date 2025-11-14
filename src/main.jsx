@@ -4,7 +4,7 @@ import './index.css';
 import App from './App.jsx';
 import FindPartners from './pages/FindPartners';
 import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+import NotFound from './components/NotFound';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import AuthProvider, { AuthContext } from './provider/AuthProvider.jsx';
 import Signup from './pages/Signup.jsx';
