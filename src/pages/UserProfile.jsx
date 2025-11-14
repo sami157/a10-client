@@ -13,7 +13,7 @@ const UserProfile = () => {
             <div>
             <div className='flex flex-col gap-6 h-screen my-20'>
                 <p className='text-[50px] text-center title-font'>User Profile</p>
-                <div className='flex flex-col gap-5 items-center mx-auto p-10 duration-500 ease-in-out justify-center rounded-xl bg-white/35 backdrop-blur-xl'>
+                <div className='flex flex-col gap-5 items-center mx-auto p-10 duration-500 ease-in-out justify-center rounded-xl bg-base-400/35 backdrop-blur-xl'>
                     <div className='flex flex-col gap-5 items-center'>
                         {<UserAvatar small={false}></UserAvatar>}
                         <div className='flex flex-col items-center gap-3'>

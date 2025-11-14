@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
-    <div className='min-h-screen bg-[linear-gradient(80deg,#E0F2FE_0%,#FFFFFF_45%,#CFFAFE_100%)]'>
+    <div className='min-h-screen bg-(--app-bg)'>
       <Navbar />
       <Outlet />
       <Footer />

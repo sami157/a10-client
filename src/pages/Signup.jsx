@@ -53,7 +53,7 @@ const Signup = () => {
                     <h1 className="text-5xl font-bold title-font text-center">Register Now!</h1>
                     <GoogleLogin onClickAction={handleGoogleLogin}></GoogleLogin>
                     <p className='title-font'>Or,</p>
-                    <div className="flex flex-col bg-white/50 backdrop-blur-xl drop-shadow-2xl w-[92vw] md:w-[400px] p-8 rounded-xl">
+                    <div className="flex flex-col bg-base-200 glass w-[92vw] md:w-[400px] p-8 rounded-xl">
                         <form onSubmit={handleSignUp} className="fieldset">
                             <label className="label">Name</label>
                             <input name='name' type='text' required className="input w-full border-0 rounded-lg" placeholder="" />

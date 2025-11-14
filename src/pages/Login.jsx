@@ -44,7 +44,7 @@ const Login = () => {
                 <h1 className="text-5xl font-bold title-font">Login</h1>
                 <GoogleLogin name='google-button' onClickAction={handleGoogleLogin}></GoogleLogin>
                 <p className='title-font'>Or,</p>
-                <div className="flex flex-col bg-white/50 backdrop-blur-xl drop-shadow-2xl w-[92vw] md:w-[400px] p-4 md:p-8 rounded-xl">
+                <div className="flex flex-col bg-base-200 glass w-[92vw] md:w-[400px] p-4 md:p-8 rounded-xl">
                     <form onSubmit={handleLogin} className="fieldset">
                         <label className="label">Email</label>
                         <input name='email' type="email" required className="input w-full border-0 rounded-lg" placeholder="" onChange={(e) => setEmail(e.target.value)} onBlur={(e) => setEmail(e.target.value)} />

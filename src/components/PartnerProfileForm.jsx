@@ -37,7 +37,7 @@ const PartnerProfileForm = () => {
         loading ? <FormSkeleton></FormSkeleton> :
             <div className="flex flex-col gap-4 justify-center items-center min-h-screen">
                 <h1 className="mt-4 text-4xl font-bold title-font text-center">Create Partner Profile</h1>
-                <div className="flex mb-4 flex-col bg-white/50 backdrop-blur-xl drop-shadow-2xl w-[92vw] md:w-[400px] p-8 rounded-xl">
+                <div className="flex mb-4 flex-col bg-base-400/50 backdrop-blur-xl drop-shadow-2xl w-[92vw] md:w-[400px] p-8 rounded-xl">
                     <form onSubmit={createProfile} className="fieldset">
                         <label className="label">Email</label>
                         <input name='email' disabled={true} type="email" defaultValue={user.email} className="input w-full rounded-lg border-0" />

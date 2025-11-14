@@ -65,7 +65,7 @@ const ProfileData = ({ profile }) => {
             {
                 user.email === data.email ? null :
                     <div className=''>
-                        <button className="bg-base-300 px-4 font-bold hover:bg-base-200 py-2 rounded-full" onClick={() => document.getElementById('message_modal').showModal()}>Send Partner Request</button>
+                        <button className="bg-base-300 px-4 font-bold hover:bg-base-100 py-2 rounded-full" onClick={() => document.getElementById('message_modal').showModal()}>Send Partner Request</button>
                     </div>}
             <dialog id="message_modal" className="modal">
                 <div className="modal-box">
