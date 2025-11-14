@@ -63,11 +63,11 @@ const FindPartners = () => {
           />
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-3 w-10/12 mx-auto gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-3 md:w-8/12 mx-auto gap-6'>
         {
           partners.map((data) => (
             <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-[linear-gradient(120deg,#E0F2FE_0%,#FFFFFF_45%,#CFFAFE_100%) rounded-xl'>
-              <img className='md:w-full rounded-lg md:h-80 w-full h-full object-cover' src={data.photoURL} alt="" />
+              <img className='w-full h-80 rounded-lg object-cover' src={data.photoURL} alt="" />
               <p className='title-font text-2xl'>{data.name}</p>
               <div className='flex gap-4 items-center'>
                 <p className='bg-white px-4 py-2 font-bold rounded-full'>{data.xpLevel}</p>
