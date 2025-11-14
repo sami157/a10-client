@@ -1,13 +1,12 @@
 import React from 'react'
+import logo from '../assets/logo.png'
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center glass bg-base-200 text-base-content rounded p-10">
-      <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-      </nav>
+    <footer className="footer flex flex-col gap-4 justify-center items-center footer-horizontal footer-center glass bg-base-100/10 glass text-base-content rounded p-10">
+      <div>
+        <img className='h-20' src={logo} alt="" />
+      </div>
       <nav>
         <div className="grid grid-flow-col gap-4">
           <a>
@@ -45,6 +44,7 @@ const Footer = () => {
           </a>
         </div>
       </nav>
+      <p className='md:w-3/5'>StudyMate is a MERN Stack web platform designed to help students connect and collaborate for better learning outcomes.It enables users to find study partners based on subjects, learning preferences, or nearby locations, making education more interactive, engaging, and goal-oriented.</p>
       <aside>
         <p>Copyright © {new Date().getFullYear()} - All right reserved by StudyMate Ltd</p>
       </aside>
