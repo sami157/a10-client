@@ -18,11 +18,11 @@ const UserProfile = () => {
                         {<UserAvatar small={false}></UserAvatar>}
                         <div className='flex flex-col items-center gap-3'>
                             <div>
-                                <p className='title-font text-center'>Name</p>
+                                <p className='title-font text-xl text-center'>Name</p>
                                 <p className=''>{user?.displayName}</p>
                             </div>
                             <div>
-                                <p className='title-font text-center'>Email</p>
+                                <p className='title-font text-xl text-center'>Email</p>
                                 <p className=''>{user?.email}</p>
                             </div>
                         </div>

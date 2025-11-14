@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { FaUser } from "react-icons/fa";
-import { NavLink, useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 const UserAvatar = ({ small }) => {
     const navigate = useNavigate()
@@ -19,9 +19,9 @@ const UserAvatar = ({ small }) => {
                             {photo ? <img title={user.displayName} className='w-6 h-6 object-cover rounded-full transition-all ease-in-out link-hover duration-250 hover:scale-120' src={photo} alt="profile picture" /> : <FaUser className='text-[30px]' />}
                         </div>
                     </div>
-                    <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <ul tabIndex="-1" className="dropdown-content menu bg-base-100/50 glass rounded-box z-1 w-52 p-2 shadow-sm">
                         <li>
-                            <NavLink to='/profile'>Profile</NavLink>
+                            <Link to='/profile'>Profile</Link>
                         </li>
                         <li>
                             <button onClick={handleSignOut}>Log Out</button>
