@@ -30,8 +30,8 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <NavLink onClick={closeDropdown} to="/register" className="btn btn-ghost btn-sm">Register</NavLink>
-          <NavLink onClick={closeDropdown} to="/login" className="btn btn-ghost btn-sm">Login</NavLink>
+          <NavLink onClick={closeDropdown} to="/register">Register</NavLink>
+          <NavLink onClick={closeDropdown} to="/login">Login</NavLink>
         </>
       )}
     </>

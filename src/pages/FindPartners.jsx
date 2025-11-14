@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, NavLink } from 'react-router';
 import axios from 'axios';
+import { FaRegStar } from "react-icons/fa";
 
 const FindPartners = () => {
   const dataArray = useLoaderData().data;
@@ -30,10 +31,11 @@ const FindPartners = () => {
 
   return (
     <div className='w-11/12 mx-auto my-4'>
-      <div className='flex justify-between mb-4'>
+      <p className='title-font text-4xl text-center m-4'>Find Partners</p>
+      <div className='flex justify-between items-center mb-4'>
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn rounded-full m-1">Sort by Experience</div>
-          <ul tabIndex="-1" className="dropdown-content rounded-3xl menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+          <div tabIndex={0} role="button" className="btn p-2 rounded-full">Sort by Experience</div>
+          <ul tabIndex="-1" className="dropdown-content rounded-3xl menu bg-base-100 rounded-box m-2 z-1 w-52 py-2 px-4">
             <li>
               <button onClick={() => setSortXp('desc')}>
                 Descending
@@ -61,16 +63,23 @@ const FindPartners = () => {
           />
         </div>
       </div>
-      <div className='grid grid-cols-3 w-10/12 mx-auto gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-3 w-10/12 mx-auto gap-6'>
         {
           partners.map((data) => (
-            <div key={data._id} className='flex flex-col gap-4 justify-between items-center'>
-              <img className='w-80 h-80 object-cover' src={data.photoURL} alt="" />
-              <p>{data.name}</p>
-              <p>{data.subject}</p>
-              <p>{data.xpLevel}</p>
-              <NavLink to={`/partner-profile/${data._id}`}>
-                <p className='hover:bg-gray-200 bg-gray-100 px-3 py-1 rounded'>
+            <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-[linear-gradient(120deg,#E0F2FE_0%,#FFFFFF_45%,#CFFAFE_100%) rounded-xl'>
+              <img className='md:w-full rounded-lg md:h-80 w-full h-full object-cover' src={data.photoURL} alt="" />
+              <p className='title-font text-2xl'>{data.name}</p>
+              <div className='flex gap-4 items-center'>
+                <p className='bg-white px-4 py-2 font-bold rounded-full'>{data.xpLevel}</p>
+                <div className='flex items-center gap-2 bg-white rounded-full py-2 px-4'>
+                  <FaRegStar />
+                  <p>{data.rating}</p>
+                </div>
+              </div>
+              <p>{`Subject: ${data.subject}`}</p>
+              <p>{`Mode: ${data.studyMode}`}</p>
+              <NavLink className='w-full' to={`/partner-profile/${data._id}`}>
+                <p className='hover:bg-gray-200 bg-base-300 px-4 py-2 text-lg font-extrabold rounded-full'>
                   View Profile
                 </p>
               </NavLink>

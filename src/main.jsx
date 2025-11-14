@@ -14,6 +14,7 @@ import Home from './pages/Home.jsx';
 import axios from 'axios';
 import ProfileData from './pages/ProfileData.jsx';
 import MyConnections from './pages/MyConnections.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 
 const router = createBrowserRouter([
@@ -41,11 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <UserProfile />
+        Component: <UserProfile />
       },
       {
         path: '/partner-profile',
-        element: <PartnerProfile />,
+        element: <PrivateRoute><PartnerProfile /></PrivateRoute>
       },
       {
         path: '/partner-profile/:id',
