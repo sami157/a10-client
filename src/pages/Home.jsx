@@ -13,7 +13,7 @@ const Home = () => {
             <Carousel></Carousel>
             <div className='flex flex-col gap-4'>
                 <p className='title-font text-3xl text-center'>Top Partners</p>
-                <div className='grid grid-cols-1 md:grid-cols-3 md:w-8/12 mx-auto gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-3 md:w-10/12 mx-auto gap-6'>
                     {
                         topProfiles.map(
                             (data) => (

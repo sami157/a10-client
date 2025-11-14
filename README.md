@@ -1,16 +1,28 @@
-# React + Vite
+# StudyMate – Find Your Perfect Study Partner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: **https://your-live-site-url.com**  
 
-Currently, two official plugins are available:
+StudyMate is a platform that helps students find compatible study partners based on subject, experience level, and preferred study mode (Online, In-Person, Hybrid).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Smart partner discovery** – Browse study partners by subject, experience level, and study mode to find the best match for your goals.
+- **Partner request system** – Send personalized partner requests with messages and manage your connections easily.
+- **Editable requests** – Update the message on a pending partner request or delete it if you change your mind.
+- **Light / Dark theme** – Seamless theme toggle powered by Tailwind CSS + DaisyUI with gradient background support.
+- **Responsive UI** – Fully responsive navbar, hero section, cards, and tables for mobile, tablet, and desktop.
+- **Profile-based browsing** – View detailed partner profiles with subject, XP level, study mode, time availability, rating, and more.
+- **Search & sort** – Search by subject and sort partners by experience level to quickly narrow down the list.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- **React** (with React Router)
+- **Tailwind CSS** + **DaisyUI**
+- **Swiper** (for hero/banner slider)
+- **Axios** (for API calls)
+- **React Hot Toast** (for notifications)
+- **MongoDB + Express** (backend APIs – if applicable in your project)

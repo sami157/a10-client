@@ -69,7 +69,7 @@ const FindPartners = () => {
                   />
                 </div>
               </div>
-              <div className='grid grid-cols-1 md:grid-cols-3 md:w-8/12 mx-auto gap-6'>
+              <div className='grid grid-cols-1 md:grid-cols-3 md:w-10/12 mx-auto gap-6'>
                 {
                   partners.map((data) => (
                     <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-[linear-gradient(120deg,#E0F2FE_0%,#FFFFFF_45%,#CFFAFE_100%) rounded-xl'>
