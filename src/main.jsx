@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        Component: <UserProfile />
+        Component: <PrivateRoute><UserProfile /></PrivateRoute>
       },
       {
         path: '/partner-profile',
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/my-connections/:email',
-        element: <MyConnections/>,
+        element: <PrivateRoute><MyConnections/></PrivateRoute>,
         loader: async ({params}) => {
           const res = await axios.get(`http://localhost:3000/partner-requests/sent/${params.email}`)
           return res.data

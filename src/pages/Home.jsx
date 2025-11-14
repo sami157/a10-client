@@ -4,6 +4,7 @@ import { NavLink } from 'react-router'
 import Carousel from '../components/Carousel';
 import { FaRegStar } from "react-icons/fa";
 import HowItWorks from '../components/HowItWorks';
+import Reviews from '../components/Reviews';
 
 const Home = () => {
     const topProfiles = useLoaderData().data
@@ -40,6 +41,7 @@ const Home = () => {
                 </div>
             </div>
             <HowItWorks/>
+            <Reviews/>
         </div>
     );
 };
