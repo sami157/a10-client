@@ -26,7 +26,7 @@ const ProfileData = ({ profile }) => {
         )
             .then(() => {
                 toast.success('Partner Request sent successfully')
-                setNumRequest(numRequest+1)
+                setNumRequest(numRequest + 1)
             }
             )
             .catch((error) => {
@@ -62,27 +62,29 @@ const ProfileData = ({ profile }) => {
                 <p className='text-3xl w-full rounded-xl glass py-4 bg-base-300/50 text-center'>{`Experience Level: `}<span className='font-extrabold'>{data.xpLevel}</span></p>
                 <img className='w-dvw md:w-auto md:h-120 object-cover rounded-2xl' src={data.photoURL} alt="" />
             </div>
-            <div className=''>
-                <button className="bg-base-300 px-4 font-bold hover:bg-base-200 py-2 rounded-full" onClick={() => document.getElementById('message_modal').showModal()}>Send Partner Request</button>
-            </div>
-                <dialog id="message_modal" className="modal">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">Add a Message with Your Request (Optional)</h3>
-                        <p className="py-4">Click the button below to send partner request, or press Esc to cancel</p>
-                        <div className="">
-                            <form className='flex flex-col gap-2' onSubmit={sendPartnerRequest} method="dialog">
-                                <textarea
-                                    className="textarea textarea-bordered w-full"
-                                    rows={4}
-                                    placeholder="Write something"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                />
-                                <button type='submit' className="btn mx-auto shrink">Send</button>
-                            </form>
-                        </div>
+            {
+                user.email === data.email ? null :
+                    <div className=''>
+                        <button className="bg-base-300 px-4 font-bold hover:bg-base-200 py-2 rounded-full" onClick={() => document.getElementById('message_modal').showModal()}>Send Partner Request</button>
+                    </div>}
+            <dialog id="message_modal" className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Add a Message with Your Request (Optional)</h3>
+                    <p className="py-4">Click the button below to send partner request, or press Esc to cancel</p>
+                    <div className="">
+                        <form className='flex flex-col gap-2' onSubmit={sendPartnerRequest} method="dialog">
+                            <textarea
+                                className="textarea textarea-bordered w-full"
+                                rows={4}
+                                placeholder="Write something"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                            />
+                            <button type='submit' className="btn mx-auto shrink">Send</button>
+                        </form>
                     </div>
-                </dialog>
+                </div>
+            </dialog>
         </div>
     );
 };

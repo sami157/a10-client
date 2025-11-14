@@ -12,17 +12,20 @@ const MyConnections = () => {
     const [profiles, setProfiles] = useState([]);
     const [message, setMessage] = useState('')
     const editMessage = async (senderEmail, receiverId, message) => {
-        try {
-            const res = await axios.patch('http://localhost:3000/partner-requests', {
-                senderEmail,
-                receiverId,
-                message
-            });
-            toast.success("Message updated!");
-            return res.data;
-        } catch (error) {
-            toast.error(error.response?.data?.message || "Failed to update message");
+        if (message) {
+            try {
+                const res = await axios.patch('http://localhost:3000/partner-requests', {
+                    senderEmail,
+                    receiverId,
+                    message
+                });
+                toast.success("Message updated!");
+                return res.data;
+            } catch (error) {
+                toast.error(error.response?.data?.message || "Failed to update message");
+            }
         }
+        else toast.error("Empty Message!");
     }
     const deleteRequest = async (senderEmail, receiverId) => {
         try {
@@ -43,7 +46,28 @@ const MyConnections = () => {
         }
     };
 
+    const showDeletePopup = (id) => {
+        toast((t) => (
+            <div className='flex flex-col gap-4 bg-base-100'>
+                <p>Delete Partner Request?</p>
+                <div className='flex justify-between items-center'>
+                    <button className='text-green-500 font-bold px-4 py-2 rounded-full bg-green-100' onClick={() => toast.dismiss(t.id)}>
+                        Cancel
+                    </button>
+                    <button className='text-red-500 font-bold px-4 py-2 rounded-full bg-red-100' onClick={() => {
+                        deleteRequest(user.email, id)
+                        toast.dismiss(t.id)
+                    }
+                    }>
+                        Delete
+                    </button>
+                </div>
 
+            </div>
+        ), {
+            duration: 6000
+        });
+    }
 
     useEffect(() => {
         if (!Array.isArray(requests) || requests.length === 0) {
@@ -64,69 +88,94 @@ const MyConnections = () => {
         )();
     }, [requests]);
     return (
-        <div className="overflow-x-auto w-10/12 mx-auto">
-            <table className="table">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Study Details</th>
-                        <th>Experience</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {profiles.map((p) => (
-                        <tr key={p._id}>
-                            {/* Name + avatar */}
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle h-12 w-12">
-                                            <img
-                                                src={
-                                                    p.photoURL ||
-                                                    "https://img.daisyui.com/images/profile/demo/2@94.webp"
-                                                }
-                                                alt={p.name || "User avatar"}
-                                            />
+        <div className="w-full flex justify-center my-6">
+            <div className="w-11/12 md:w-10/12 lg:w-8/12 overflow-x-auto">
+                <table className="table w-full text-center">
+                    <thead>
+                        <tr className="align-middle">
+                            <th>Name</th>
+                            <th>Study Details</th>
+                            <th>Experience</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {profiles.map((p) => (
+                            <tr key={p._id} className="hover">
+                                {/* Name + avatar */}
+                                <td>
+                                    <div className="flex items-center justify-start gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-circle h-12 w-12">
+                                                <img
+                                                    src={
+                                                        p.photoURL ||
+                                                        "https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                                    }
+                                                    alt={p.name || "User avatar"}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="text-left">
+                                            <div className="font-bold">{p.name || "Unknown"}</div>
+                                            <div className="text-sm opacity-50">
+                                                {p.location || "—"}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div className="font-bold">{p.name || "Unknown"}</div>
-                                        <div className="text-sm opacity-50">
-                                            {p.location || "—"}
-                                        </div>
+                                </td>
+
+                                {/* Study details */}
+                                <td>
+                                    <div className="flex flex-col items-center gap-1">
+                                        <span>{p.studyMode || "—"}</span>
+                                        <span className="badge badge-ghost badge-sm">
+                                            {p.time || "No time set"}
+                                        </span>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
 
-                            {/* Study details */}
-                            <td>
-                                {p.studyMode || "—"}
-                                <br />
-                                <span className="badge badge-ghost badge-sm">
-                                    {p.time || "No time set"}
-                                </span>
-                            </td>
+                                {/* Experience */}
+                                <td>
+                                    <span className="font-semibold">
+                                        {p.xpLevel ?? "—"}
+                                    </span>
+                                </td>
 
-                            {/* XP */}
-                            <td>
-                                {p.xpLevel ?? "—"}
-                            </td>
+                                {/* Actions */}
+                                <td>
+                                    <div className="flex items-center justify-center gap-3">
+                                        <button
+                                            className="text-blue-500 font-bold px-4 py-1 rounded-full bg-blue-100"
+                                            onClick={() =>
+                                                document
+                                                    .getElementById(`message_modal_edit_${p._id}`)
+                                                    .showModal()
+                                            }
+                                        >
+                                            Edit
+                                        </button>
 
-                            {/* Action */}
-                            <th className='flex gap-4'>
-                                <button className="btn btn-primary rounded-full" onClick={() => document.getElementById('message_modal_edit').showModal()}>Edit</button>
-                                {
-                                    loading || (
-                                        <div>
-                                            <dialog id="message_modal_edit" className="modal">
-                                                <div className="modal-box">
-                                                    <h3 className="font-bold text-lg">Edit Message</h3>
-                                                    <p className="py-4">Click the Done button below to confirm, or Esc to cancel</p>
-                                                    <div className="">
-                                                        <form className='flex flex-col gap-2' method="dialog" onSubmit={() => editMessage(user.email, p._id, message)}>
+                                        {loading || (
+                                            <>
+                                                <dialog
+                                                    id={`message_modal_edit_${p._id}`}
+                                                    className="modal"
+                                                >
+                                                    <div className="modal-box">
+                                                        <h3 className="font-bold text-lg">Edit Message</h3>
+                                                        <p className="py-2 text-sm">
+                                                            Update your message and click Done to save.
+                                                        </p>
+
+                                                        <form
+                                                            className="flex flex-col gap-3 mt-2"
+                                                            method="dialog"
+                                                            onSubmit={() =>
+                                                                editMessage(user.email, p._id, message)
+                                                            }
+                                                        >
                                                             <textarea
                                                                 className="textarea textarea-bordered w-full"
                                                                 rows={4}
@@ -134,21 +183,47 @@ const MyConnections = () => {
                                                                 value={message}
                                                                 onChange={(e) => setMessage(e.target.value)}
                                                             />
-                                                            <button type='submit' className="btn mx-auto">Done</button>
+                                                            <div className="flex justify-end gap-2">
+                                                                <button
+                                                                    type="button"
+                                                                    className="hover:bg-base-300 px-4 py-2 rounded-full"
+                                                                    onClick={() =>
+                                                                        document
+                                                                            .getElementById(
+                                                                                `message_modal_edit_${p._id}`
+                                                                            )
+                                                                            .close()
+                                                                    }
+                                                                >
+                                                                    Cancel
+                                                                </button>
+                                                                <button
+                                                                    type="submit"
+                                                                    className="text-green-500 font-bold px-4 py-2 rounded-full bg-green-100"
+                                                                >
+                                                                    Done
+                                                                </button>
+                                                            </div>
                                                         </form>
                                                     </div>
-                                                </div>
-                                            </dialog>
-                                            <button onClick={() => deleteRequest(user.email, p._id)} className="btn btn-error btn-md rounded-full">Delete</button>
-                                        </div>
-                                    )
-                                }
-                            </th>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                                                </dialog>
+                                                <button
+                                                    onClick={() => showDeletePopup(p._id)}
+                                                    className="text-red-500 font-bold px-4 py-1 rounded-full bg-red-100"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </>
+                                        )}
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     );
 };
 
