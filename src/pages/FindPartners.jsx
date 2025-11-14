@@ -31,9 +31,9 @@ const FindPartners = () => {
   return (
     <div className='w-11/12 mx-auto my-4'>
       <div className='flex justify-between mb-4'>
-        <details className="dropdown">
-          <summary className="m-1 btn">Sort by Experience</summary>
-          <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn rounded-full m-1">Sort by Experience</div>
+          <ul tabIndex="-1" className="dropdown-content rounded-3xl menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
             <li>
               <button onClick={() => setSortXp('desc')}>
                 Descending
@@ -50,33 +50,17 @@ const FindPartners = () => {
               </button>
             </li>
           </ul>
-        </details>
-
-        {/* Search input */}
+        </div>
         <div>
-          <label className="input rounded-full flex items-center gap-2">
-            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2.5"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
-              </g>
-            </svg>
-            <input
-              type="search"
-              placeholder="Search by Subject"
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-            />
-          </label>
+          <input
+            className='py-2 px-4 bg-white rounded-full'
+            type="search"
+            placeholder="Search by Subject"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+          />
         </div>
       </div>
-
       <div className='grid grid-cols-3 w-10/12 mx-auto gap-6'>
         {
           partners.map((data) => (

@@ -7,12 +7,12 @@ import { Toaster } from 'react-hot-toast'
 function App() {
 
   return (
-    <>
+    <div className='bg-amber-100'>
       <Navbar/>
       <Outlet/>
       <Footer/>
       <Toaster/>
-    </>
+    </div>
   )
 }
 

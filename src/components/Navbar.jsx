@@ -8,9 +8,9 @@ import logo from '../assets/logo.png'
 const Navbar = () => {
   const { user } = use(AuthContext)
   return (
-    <div className='px-4 py-2 flex justify-between items-center bg-gray-100 sticky'>
+    <div className='px-4 py-2 flex glass justify-between items-center bg-white/10 sticky'>
       <div className='flex gap-4 items-center'>
-        <NavLink to='/'><img className='h-15' src={logo} alt="" /></NavLink>
+        <img className='h-15' src={logo} alt="" />
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/find-partners'>Find Partners</NavLink>
       </div>

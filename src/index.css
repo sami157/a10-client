@@ -1,2 +1,22 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+.title-font {
+  font-family: "Zalando Sans Expanded", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+* {
+    font-family: "Cabin", sans-serif;
+}
+
+
+a.active {
+  background-color: white;
+  font-weight: 700;
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 48px;
+}
