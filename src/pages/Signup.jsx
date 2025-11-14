@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router';
 import { Eye, EyeOff } from 'lucide-react';
 import GoogleLogin from '../components/GoogleLogin';
 import toast from 'react-hot-toast';
+import FormSkeleton from '../components/skeleton/FormSkeleton';
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -46,7 +47,7 @@ const Signup = () => {
             })
     }
     return (
-        loading ? <p>Loading </p>
+        loading ? <FormSkeleton/>
             : (
                 <div className="flex flex-col gap-4 justify-center items-center min-h-screen">
                     <h1 className="text-5xl font-bold title-font text-center">Register Now!</h1>
