@@ -6,7 +6,6 @@ const Home = () => {
     const topProfiles = useLoaderData().data
     return (
         <div className='flex flex-col gap-4'>
-            {/* Top 3 Providers */}
             <div className='flex gap-10'>
                 {
                     topProfiles.map(

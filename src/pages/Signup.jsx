@@ -1,12 +1,13 @@
 import { use, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router';
 import { Eye, EyeOff } from 'lucide-react';
 import GoogleLogin from '../components/GoogleLogin';
 import toast from 'react-hot-toast';
 
 const Signup = () => {
     const navigate = useNavigate()
+    const location = useLocation()
     const { createUser, updateUserProfile, signInUser, loading, errorMessage, setErrorMessage } = use(AuthContext)
     const [invalidPassword, setInvalidPassword] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
@@ -25,7 +26,7 @@ const Signup = () => {
                     updateUserProfile(form.name.value, form.photoUrl.value)
                     toast.success('Registered successfully')
                     form.reset()
-                    navigate('/')
+                    navigate(`${location.state ? location.state : '/'}`)
                 })
                 .catch((error) => {
                     toast.error('Registration failed!')
@@ -37,7 +38,7 @@ const Signup = () => {
     const handleGoogleLogin = () => {
         signInUser('', '', true).then(() => {
             toast.success('Logged in with Google Successfully')
-            navigate('/')
+            navigate(`${location.state ? location.state : '/'}`)
         })
             .catch((error) => {
                 toast.error('Google Login failed!')

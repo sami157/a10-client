@@ -30,7 +30,7 @@ const Login = () => {
         signInUser('', '', true).then(
             () => {
                 toast.success('Logged in with Google Successfully')
-                navigate('/')
+                navigate(`${location.state ? location.state : '/'}`)
             })
             .catch((error) => {
                 toast.error('Google login failed!')

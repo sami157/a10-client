@@ -65,6 +65,7 @@ const FindPartners = () => {
         {
           partners.map((data) => (
             <div key={data._id} className='flex flex-col gap-4 justify-between items-center'>
+              <img className='w-80 h-80 object-cover' src={data.photoURL} alt="" />
               <p>{data.name}</p>
               <p>{data.subject}</p>
               <p>{data.xpLevel}</p>
