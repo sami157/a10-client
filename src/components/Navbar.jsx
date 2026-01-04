@@ -1,13 +1,13 @@
 import React from 'react'
 import { use } from 'react'
-import { NavLink } from 'react-router'
+import { NavLink, Link } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
 import UserAvatar from '../components/UserAvatar'
 import { useRef } from 'react'
 import Logo from './Logo'
 
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
   const dropdownRef = useRef();
   const closeDropdown = () => {
     if (dropdownRef.current) {
@@ -17,23 +17,26 @@ const Navbar = () => {
 
   const mainLinks = (
     <>
-      <NavLink onClick={closeDropdown} to="/">Home</NavLink>
-      <NavLink onClick={closeDropdown} to="/find-partners">Find Partners</NavLink>
+      <NavLink onClick={closeDropdown} to="/" viewTransition>Home</NavLink>
+      <NavLink onClick={closeDropdown} to="/find-partners" viewTransition>Find Partners</NavLink>
     </>
   );
   const authLinks = (
     <>
       {user ? (
         <>
-          <NavLink onClick={closeDropdown} to="/partner-profile">My Partner Profile</NavLink>
-          <NavLink onClick={closeDropdown} to={`/my-connections/${user.email}`}>My Connections</NavLink>
+          <NavLink onClick={closeDropdown} to="/partner-profile" viewTransition>My Partner Profile</NavLink>
+          <NavLink onClick={closeDropdown} to={`/my-connections/${user.email}`} viewTransition>My Connections</NavLink>
         </>
-      ) : (
-        <>
-          <NavLink onClick={closeDropdown} to="/register">Register</NavLink>
-          <NavLink onClick={closeDropdown} to="/login">Login</NavLink>
-        </>
-      )}
+      ) : loading
+          ? <span className="loading loading-dots loading-md"></span>
+        :
+        (
+          <>
+            <NavLink onClick={closeDropdown} to="/register" viewTransition>Register</NavLink>
+            <NavLink onClick={closeDropdown} to="/login" viewTransition>Login</NavLink>
+          </>
+        )}
     </>
   );
 
@@ -72,12 +75,12 @@ const Navbar = () => {
   return (
     <div className="px-4 py-2 bg-base-100/10 backdrop-blur-2xl sticky top-0 z-50">
       <div className="flex justify-between items-center md:hidden">
-        <div>
-          <Logo/>
-        </div>
+        <Link to='/' viewTransition>
+          <Logo />
+        </Link>
 
         <div className="flex items-center gap-2">
-          {user && <UserAvatar small={true}/>}
+          {user && <UserAvatar small={true} />}
           <details ref={dropdownRef} className="dropdown dropdown-end">
             <summary className="btn btn-ghost btn-circle">
               <svg
@@ -106,7 +109,9 @@ const Navbar = () => {
 
       <div className="hidden md:flex justify-between items-center">
         <div className="flex gap-4 justify-center items-center">
-          <Logo/>
+          <Link to='/' viewTransition>
+            <Logo />
+          </Link>
           {mainLinks}
           {themeToggle}
         </div>

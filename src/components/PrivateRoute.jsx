@@ -6,8 +6,8 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation()
     const { loading, user } = use(AuthContext)
     return (
-        loading ? <p>Loading</p> //fallback
-            : (
+        loading ? children : 
+             (
                 <div>
                     {user ? children : <Navigate state={location.pathname} to='/login'></Navigate>}
                 </div>

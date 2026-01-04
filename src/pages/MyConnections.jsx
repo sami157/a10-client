@@ -52,14 +52,14 @@ const MyConnections = () => {
     };
 
     const showDeletePopup = (id) => {
-        toast((t) => (
-            <div className='flex flex-col gap-4'>
+        toast.custom((t) => (
+            <div className='flex flex-col gap-4 bg-base-100 drop-shadow-2xl p-4 rounded-2xl'>
                 <p>Delete Partner Request?</p>
                 <div className='flex justify-between items-center'>
-                    <button className='text-green-500 font-bold px-4 py-2 rounded-full bg-green-100' onClick={() => toast.dismiss(t.id)}>
+                    <button className='text-base-content font-bold px-4 py-2 rounded-full cursor-pointer bg-base-200' onClick={() => toast.dismiss(t.id)}>
                         Cancel
                     </button>
-                    <button className='text-red-500 font-bold px-4 py-2 rounded-full bg-red-100' onClick={() => {
+                    <button className='text-error-content cursor-pointer bg-error font-bold px-4 py-2 rounded-full' onClick={() => {
                         deleteRequest(user.email, id)
                         toast.dismiss(t.id)
                     }
@@ -71,7 +71,13 @@ const MyConnections = () => {
             </div>
         ), {
             duration: 6000
-        });
+        },
+            {
+                style: {
+                    padding: '0px',
+                },
+            }
+        );
     }
 
     useEffect(() => {
@@ -93,7 +99,7 @@ const MyConnections = () => {
         )();
     }, [requests]);
     return (
-        <>
+        <div className='min-h-screen'>
             <p className='text-center title-font text-3xl my-4'>My Connections</p>
             <div className="w-full flex justify-center my-6">
                 <div className="w-11/12 flex flex-col gap-4 md:w-10/12 lg:w-8/12 overflow-x-auto">
@@ -163,7 +169,7 @@ const MyConnections = () => {
                                                 <td>
                                                     <div className="flex items-center justify-center gap-3">
                                                         <button
-                                                            className="text-blue-500 font-bold px-4 py-1 rounded-full bg-blue-100"
+                                                            className="text-base-content font-bold px-4 py-1 rounded-full cursor-pointer bg-base-300"
                                                             onClick={() =>
                                                                 document
                                                                     .getElementById(`message_modal_edit_${p._id}`)
@@ -225,7 +231,7 @@ const MyConnections = () => {
                                                                 </dialog>
                                                                 <button
                                                                     onClick={() => showDeletePopup(p._id)}
-                                                                    className="text-red-500 font-bold px-4 py-1 rounded-full bg-red-100"
+                                                                    className="text-error-content font-bold px-4 py-1 rounded-full cursor-pointer bg-error"
                                                                 >
                                                                     Delete
                                                                 </button>
@@ -241,7 +247,7 @@ const MyConnections = () => {
 
                 </div>
             </div>
-        </>
+        </div>
 
     );
 };
