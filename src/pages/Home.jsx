@@ -14,7 +14,7 @@ const Home = () => {
             <Carousel></Carousel>
             <div className='flex flex-col gap-4'>
                 <p className='title-font text-5xl text-center'>Top Partners</p>
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:w-3/4 mx-auto gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-3 px-2 lg:w-3/4 mx-auto gap-6'>
                     {
                         topProfiles.map(
                             (data) => (
@@ -31,7 +31,7 @@ const Home = () => {
                                     <p>{`Subject: ${data.subject}`}</p>
                                     <p>{`Mode: ${data.studyMode}`}</p>
                                     <NavLink className='w-full' to={`/partner-profile/${data._id}`}>
-                                        <p className='hover:bg-base-100 bg-base-300 px-4 py-2 text-lg font-extrabold rounded-full'>
+                                        <p className='cursor-pointer bg-base-300 px-4 py-2 text-lg font-extrabold rounded-full'>
                                             View Profile
                                         </p>
                                     </NavLink>
