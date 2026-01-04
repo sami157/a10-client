@@ -24,7 +24,7 @@ const PartnerProfileForm = () => {
             rating: +(Math.random() * (5 - 3.5) + 3.5).toFixed(1),
             partnerCount: 0,
         };
-        await axios.post("a10-server-lake.vercel.app/study-partners", partnerProfile)
+        await axios.post("https://a10-server-seven.vercel.app/study-partners", partnerProfile)
             .then(() => {
                 toast.success('User Profile Created')
                 navigate('/')

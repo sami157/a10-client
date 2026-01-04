@@ -17,7 +17,7 @@ const ProfileData = ({ profile }) => {
     const data = profile || loaderData
     const [numRequest, setNumRequest] = useState(data.partnerCount)
     const sendPartnerRequest = async () => {
-        await axios.post('a10-server-lake.vercel.app/partner-requests',
+        await axios.post('https://a10-server-seven.vercel.app/partner-requests',
             {
                 senderEmail: user.email,
                 receiverId: data._id,

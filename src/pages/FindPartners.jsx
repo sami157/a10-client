@@ -15,7 +15,7 @@ const FindPartners = () => {
 
   const fetchPartners = async () => {
     try {
-      const res = await axios.get('a10-server-lake.vercel.app/study-partners', {
+      const res = await axios.get('https://a10-server-seven.vercel.app/study-partners', {
         params: {
           subject: subject || undefined,
           sortXp: sortXp || undefined,

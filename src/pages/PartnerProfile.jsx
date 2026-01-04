@@ -21,7 +21,7 @@ const PartnerProfile = () => {
 
     setChecking(true);
     axios
-      .get(`a10-server-lake.vercel.app/study-partners/check/${user.email}`)
+      .get(`https://a10-server-seven.vercel.app/study-partners/check/${user.email}`)
       .then(({ data }) => {
         setPartner(data || null);
       })
