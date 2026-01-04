@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router'
 const HowItWorks = () => {
     return (
-        <div className='my-10'>
-            <div className="hero mb-4 rounded-sm bg-base-200/60">
+        <div className='my-15'>
+            <div className="hero rounded-sm bg-base-200/60">
                 <div className="md:hero-content text-center">
                     <div className="flex flex-col md:text-center text-justify p-4 gap-4 md:w-3/5">
                         <h1 className="text-3xl md:text-4xl title-font text-center font-bold">How StudyMate Works</h1>

@@ -4,7 +4,7 @@ import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <footer className="footer mt-10 flex flex-col gap-4 justify-center items-center footer-horizontal footer-center bg-base-100/10 text-base-content rounded p-10">
+    <footer className="footer mt-10 flex flex-col gap-4 justify-center items-center footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
       <div className='scale-150'>
         <Logo/>
       </div>

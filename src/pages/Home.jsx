@@ -18,7 +18,7 @@ const Home = () => {
                         topProfiles.map(
                             (data) => (
                                 <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-base-200 rounded-2xl px-4'>
-                                    <img className='w-full h-80 rounded-lg object-cover' src={data.photoURL} alt="" />
+                                    <img loading='lazy' className='w-full h-80 rounded-lg object-cover' src={data.photoURL} alt="" />
                                     <p className='title-font text-2xl'>{data.name}</p>
                                     <div className='flex gap-4 items-center'>
                                         <p className='bg-base-400 px-4 py-2 font-bold rounded-full'>{data.xpLevel}</p>

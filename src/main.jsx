@@ -15,12 +15,14 @@ import axios from 'axios';
 import ProfileData from './pages/ProfileData.jsx';
 import MyConnections from './pages/MyConnections.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import HydrateFallback from './components/HydrateFallback.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    hydrateFallbackElement: <HydrateFallback/>,
     children: [
       {
         path: "/",

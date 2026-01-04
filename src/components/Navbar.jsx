@@ -73,7 +73,7 @@ const Navbar = () => {
   )
 
   return (
-    <div className="px-4 py-2 bg-base-100/10 backdrop-blur-2xl sticky top-0 z-50">
+    <div className="px-4 py-2 bg-base-100/50 backdrop-blur-2xl sticky top-0 z-50">
       <div className="flex justify-between items-center md:hidden">
         <Link to='/' viewTransition>
           <Logo />

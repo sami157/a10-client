@@ -35,6 +35,7 @@ const ProfileData = ({ profile }) => {
     }
     return (
         <div className='flex p-4 flex-col gap-4 justify-center items-center min-h-screen'>
+            <img loading='lazy' className='w-dvw md:w-auto md:h-120 object-cover rounded-2xl' src={data.photoURL} alt="" />
             <div className='flex md:flex-row flex-col gap-2 items-center md:gap-8'>
                 <p className='title-font text-4xl text-center'>{data.name}</p>
                 <div className='flex gap-2 items-center'>
@@ -60,7 +61,6 @@ const ProfileData = ({ profile }) => {
             <div className='flex flex-col gap-4 md:w-2/5'>
                 <p className='text-3xl w-full rounded-xl py-4 bg-base-300/50 text-center'>{`Subject: `}<span className='font-extrabold'>{data.subject}</span></p>
                 <p className='text-3xl w-full rounded-xl py-4 bg-base-300/50 text-center'>{`Experience Level: `}<span className='font-extrabold'>{data.xpLevel}</span></p>
-                <img className='w-dvw md:w-auto md:h-120 object-cover rounded-2xl' src={data.photoURL} alt="" />
             </div>
             {
                 user.email === data.email ? null :
