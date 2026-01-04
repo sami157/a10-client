@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { use } from 'react';
-import { useLoaderData } from 'react-router'
+import { Link, useLoaderData } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
@@ -11,13 +11,13 @@ import { PiStar } from "react-icons/pi";
 import { SlLocationPin } from "react-icons/sl";
 
 const ProfileData = ({ profile }) => {
-    const { user } = use(AuthContext)
+    const { user, loading } = use(AuthContext)
     const [message, setMessage] = useState('')
     const loaderData = useLoaderData()
     const data = profile || loaderData
     const [numRequest, setNumRequest] = useState(data.partnerCount)
     const sendPartnerRequest = async () => {
-        await axios.post('http://localhost:3000/partner-requests',
+        await axios.post('a10-server-lake.vercel.app/partner-requests',
             {
                 senderEmail: user.email,
                 receiverId: data._id,
@@ -63,9 +63,10 @@ const ProfileData = ({ profile }) => {
                 <p className='text-3xl w-full rounded-xl py-4 bg-base-300/50 text-center'>{`Experience Level: `}<span className='font-extrabold'>{data.xpLevel}</span></p>
             </div>
             {
-                user.email === data.email ? null :
+                user?.email === data?.email ? null : 
+                    !user || loading ? <Link className='link link-hover' to='/login'>Please Login to send partner request</Link> :
                     <div className=''>
-                        <button className="bg-base-300 px-4 font-bold hover:bg-base-100 py-2 rounded-full" onClick={() => document.getElementById('message_modal').showModal()}>Send Partner Request</button>
+                        <button className="bg-base-300/70 cursor-pointer px-4 font-bold hover:bg-base-300 py-2 rounded-full" onClick={() => document.getElementById('message_modal').showModal()}>Send Partner Request</button>
                     </div>}
             <dialog id="message_modal" className="modal">
                 <div className="modal-box">

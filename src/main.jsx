@@ -27,12 +27,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => axios.get('http://localhost:3000/study-partners/top')
+        loader: () => axios.get('a10-server-lake.vercel.app/study-partners/top')
       },
       {
         path: "/find-partners",
         element: <FindPartners />,
-        loader: () => axios.get('http://localhost:3000/study-partners')
+        loader: () => axios.get('a10-server-lake.vercel.app/study-partners')
       },
       {
         path: "/login",
@@ -52,9 +52,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/partner-profile/:id',
-        element: <PrivateRoute><ProfileData /></PrivateRoute>,
+        element: <ProfileData />,
         loader: async ({ params }) => {
-          const res = await axios.get(`http://localhost:3000/study-partners/find/${params.id}`);
+          const res = await axios.get(`a10-server-lake.vercel.app/study-partners/find/${params.id}`);
           return res.data;
         },
       },
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         path: '/my-connections/:email',
         element: <PrivateRoute><MyConnections/></PrivateRoute>,
         loader: async ({params}) => {
-          const res = await axios.get(`http://localhost:3000/partner-requests/sent/${params.email}`)
+          const res = await axios.get(`a10-server-lake.vercel.app/partner-requests/sent/${params.email}`)
           return res.data
         }
       }
@@ -79,7 +79,7 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} future={{ v7_viewTransition: true }} />
     </AuthProvider>
   </StrictMode>
 );

@@ -15,7 +15,7 @@ const MyConnections = () => {
     const editMessage = async (senderEmail, receiverId, message) => {
         if (message) {
             try {
-                const res = await axios.patch('http://localhost:3000/partner-requests', {
+                const res = await axios.patch('a10-server-lake.vercel.app/partner-requests', {
                     senderEmail,
                     receiverId,
                     message
@@ -31,7 +31,7 @@ const MyConnections = () => {
     const deleteRequest = async (senderEmail, receiverId) => {
         toast.promise(
             async () => {
-                await axios.delete("http://localhost:3000/partner-requests", {
+                await axios.delete("a10-server-lake.vercel.app/partner-requests", {
                     data: {
                         senderEmail,
                         receiverId
@@ -90,7 +90,7 @@ const MyConnections = () => {
             const results = await Promise.all(
                 requests.map((r) =>
                     axios
-                        .get(`http://localhost:3000/study-partners/find/${r.receiverId}`)
+                        .get(`a10-server-lake.vercel.app/study-partners/find/${r.receiverId}`)
                         .then(res => res.data)
                 )
             );
