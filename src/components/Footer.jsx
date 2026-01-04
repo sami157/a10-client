@@ -1,12 +1,12 @@
 import React from 'react'
-import logo from '../assets/logo.png'
 import { FaXTwitter } from "react-icons/fa6";
+import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <footer className="footer mt-10 flex flex-col gap-4 justify-center items-center footer-horizontal footer-center glass bg-base-100/10 glass text-base-content rounded p-10">
-      <div>
-        <img className='h-20' src={logo} alt="" />
+    <footer className="footer mt-10 flex flex-col gap-4 justify-center items-center footer-horizontal footer-center bg-base-100/10 text-base-content rounded p-10">
+      <div className='scale-150'>
+        <Logo/>
       </div>
       <nav>
         <div className="flex items-center gap-4">

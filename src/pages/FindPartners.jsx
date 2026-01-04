@@ -3,6 +3,8 @@ import { useLoaderData, NavLink } from 'react-router';
 import axios from 'axios';
 import { FaRegStar } from "react-icons/fa";
 import GridSkeleton from '../components/skeleton/GridSkeleton';
+import { IoMdSearch } from "react-icons/io";
+import { FaSort } from "react-icons/fa";
 
 const FindPartners = () => {
   const dataArray = useLoaderData().data;
@@ -40,8 +42,8 @@ const FindPartners = () => {
             <div>
               <div className='flex justify-between items-center mb-4'>
                 <div className="dropdown">
-                  <div tabIndex={0} role="button" className="btn p-2 rounded-full">Sort by Experience</div>
-                  <ul tabIndex="-1" className="dropdown-content rounded-3xl menu bg-base-100 rounded-box m-2 z-1 w-52 py-2 px-4">
+                  <div tabIndex={0} role="button" className="btn px-4 py-2 rounded-xl bg-base-200"><span><FaSort/></span>Sort by Experience</div>
+                  <ul tabIndex="-1" className="dropdown-content rounded-xl menu bg-base-200 m-2 z-1 w-52 py-2 px-4">
                     <li>
                       <button onClick={() => setSortXp('desc')}>
                         Descending
@@ -59,9 +61,10 @@ const FindPartners = () => {
                     </li>
                   </ul>
                 </div>
-                <div>
+                <div className='py-1 px-4 bg-base-200 rounded-xl flex gap-2 items-center'>
+                  <IoMdSearch/>
                   <input
-                    className='py-2 px-4 bg-base-400 rounded-full'
+                  className='px-1 py-1 rounded-lg'
                     type="search"
                     placeholder="Search by Subject"
                     value={subject}
@@ -69,7 +72,7 @@ const FindPartners = () => {
                   />
                 </div>
               </div>
-              <div className='grid grid-cols-1 md:grid-cols-3 md:w-10/12 mx-auto gap-6'>
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:w-10/12 md:w-11/12 mx-auto gap-6'>
                 {
                   partners.map((data) => (
                     <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-[linear-gradient(120deg,#E0F2FE_0%,#FFFFFF_45%,#CFFAFE_100%) rounded-xl'>

@@ -58,8 +58,8 @@ const ProfileData = ({ profile }) => {
             </div>
             <p className='text-xl'>Number of Requests: <span>{numRequest}</span></p>
             <div className='flex flex-col gap-4 md:w-2/5'>
-                <p className='text-3xl w-full rounded-xl glass py-4 bg-base-300/50 text-center'>{`Subject: `}<span className='font-extrabold'>{data.subject}</span></p>
-                <p className='text-3xl w-full rounded-xl glass py-4 bg-base-300/50 text-center'>{`Experience Level: `}<span className='font-extrabold'>{data.xpLevel}</span></p>
+                <p className='text-3xl w-full rounded-xl py-4 bg-base-300/50 text-center'>{`Subject: `}<span className='font-extrabold'>{data.subject}</span></p>
+                <p className='text-3xl w-full rounded-xl py-4 bg-base-300/50 text-center'>{`Experience Level: `}<span className='font-extrabold'>{data.xpLevel}</span></p>
                 <img className='w-dvw md:w-auto md:h-120 object-cover rounded-2xl' src={data.photoURL} alt="" />
             </div>
             {
@@ -74,7 +74,7 @@ const ProfileData = ({ profile }) => {
                     <div className="">
                         <form className='flex flex-col gap-2' onSubmit={sendPartnerRequest} method="dialog">
                             <textarea
-                                className="textarea textarea-bordered w-full"
+                                className="textarea textarea-bordered rounded-lg w-full"
                                 rows={4}
                                 placeholder="Write something"
                                 value={message}

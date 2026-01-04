@@ -29,27 +29,31 @@ const MyConnections = () => {
         else toast.error("Empty Message!");
     }
     const deleteRequest = async (senderEmail, receiverId) => {
-        try {
-            await axios.delete("http://localhost:3000/partner-requests", {
-                data: {
-                    senderEmail,
-                    receiverId
-                }
-            });
-            toast.success("Request deleted");
-            setRequests(
-                requests.filter(req =>
-                    !(req.senderEmail === senderEmail && req.receiverId === receiverId)
-                )
-            );
-        } catch (err) {
-            toast.error(err.response?.data?.message || "Delete failed");
-        }
+        toast.promise(
+            async () => {
+                await axios.delete("http://localhost:3000/partner-requests", {
+                    data: {
+                        senderEmail,
+                        receiverId
+                    }
+                })
+                setRequests(
+                    requests.filter(req =>
+                        !(req.senderEmail === senderEmail && req.receiverId === receiverId)
+                    )
+                );
+            },
+            {
+                loading: 'Deleting request...',
+                success: 'Request deleted successfully',
+                error: 'Operation failed',
+            }
+        );
     };
 
     const showDeletePopup = (id) => {
         toast((t) => (
-            <div className='flex flex-col gap-4 bg-base-100'>
+            <div className='flex flex-col gap-4'>
                 <p>Delete Partner Request?</p>
                 <div className='flex justify-between items-center'>
                     <button className='text-green-500 font-bold px-4 py-2 rounded-full bg-green-100' onClick={() => toast.dismiss(t.id)}>
@@ -189,7 +193,7 @@ const MyConnections = () => {
                                                                             }
                                                                         >
                                                                             <textarea
-                                                                                className="textarea textarea-bordered w-full"
+                                                                                className="textarea textarea-bordered rounded-lg w-full"
                                                                                 rows={4}
                                                                                 placeholder="Write something"
                                                                                 value={message}

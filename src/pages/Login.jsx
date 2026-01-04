@@ -17,15 +17,17 @@ const Login = () => {
     const handleLogin = (event) => {
         const form = event.target
         event.preventDefault()
-        signInUser(form.email.value, form.password.value, false)
-            .then(() => {
-                toast.success('Logged in successfully')
-                navigate(`${location.state ? location.state : '/'}`)
-            })
-            .catch((error) => {
-                toast.error('Login failed!')
-                setErrorMessage(error.message)
-            })
+        toast.promise(
+            async () => {
+                await signInUser(form.email.value, form.password.value, false)
+                await navigate(`${location.state ? location.state : '/'}`)
+            },
+            {
+                loading: 'Logging in...',
+                success: 'Logged in successfully',
+                error: 'Login failed',
+            }
+        );
     }
     const handleGoogleLogin = () => {
         signInUser('', '', true).then(
@@ -44,7 +46,7 @@ const Login = () => {
                 <h1 className="text-5xl font-bold title-font">Login</h1>
                 <GoogleLogin name='google-button' onClickAction={handleGoogleLogin}></GoogleLogin>
                 <p className='title-font'>Or,</p>
-                <div className="flex flex-col bg-base-200 glass w-[92vw] md:w-[400px] p-4 md:p-8 rounded-xl">
+                <div className="flex flex-col bg-base-200 w-[92vw] md:w-[400px] p-4 md:p-8 rounded-xl">
                     <form onSubmit={handleLogin} className="fieldset">
                         <label className="label">Email</label>
                         <input name='email' type="email" required className="input w-full border-0 rounded-lg" placeholder="" onChange={(e) => setEmail(e.target.value)} onBlur={(e) => setEmail(e.target.value)} />

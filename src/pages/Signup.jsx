@@ -22,17 +22,18 @@ const Signup = () => {
         }
         else {
             setInvalidPassword(false)
-            createUser(form.email.value, form.password.value)
-                .then(() => {
-                    updateUserProfile(form.name.value, form.photoUrl.value)
-                    toast.success('Registered successfully')
-                    form.reset()
+            toast.promise(
+                async () => {
+                    await createUser(form.email.value, form.password.value)
+                    await updateUserProfile(form.name.value, form.photoUrl.value)
                     navigate(`${location.state ? location.state : '/'}`)
-                })
-                .catch((error) => {
-                    toast.error('Registration failed!')
-                    setErrorMessage(error.message)
-                })
+                },
+                {
+                    loading: 'Registration in progress...',
+                    success: 'Registered successfully',
+                    error: 'Registration failed',
+                }
+            );
         }
 
     }
@@ -53,7 +54,7 @@ const Signup = () => {
                     <h1 className="text-5xl font-bold title-font text-center">Register Now!</h1>
                     <GoogleLogin onClickAction={handleGoogleLogin}></GoogleLogin>
                     <p className='title-font'>Or,</p>
-                    <div className="flex flex-col bg-base-200 glass w-[92vw] md:w-[400px] p-8 rounded-xl">
+                    <div className="flex flex-col bg-base-200 w-[92vw] md:w-[400px] p-8 rounded-xl">
                         <form onSubmit={handleSignUp} className="fieldset">
                             <label className="label">Name</label>
                             <input name='name' type='text' required className="input w-full border-0 rounded-lg" placeholder="" />

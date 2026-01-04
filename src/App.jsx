@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
-    <div className='min-h-screen bg-(--app-bg)'>
+    <div className='min-h-screen'>
       <Navbar />
       <Outlet />
       <Footer />

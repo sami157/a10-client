@@ -9,15 +9,15 @@ import Reviews from '../components/Reviews';
 const Home = () => {
     const topProfiles = useLoaderData().data
     return (
-        <div className='flex flex-col gap-4 px-4'>
+        <div className='flex flex-col bg-base-200'>
             <Carousel></Carousel>
             <div className='flex flex-col gap-4'>
                 <p className='title-font text-3xl text-center'>Top Partners</p>
-                <div className='grid grid-cols-1 md:grid-cols-3 md:w-10/12 mx-auto gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:w-3/4 mx-auto gap-6'>
                     {
                         topProfiles.map(
                             (data) => (
-                                <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-[linear-gradient(120deg,#E0F2FE_0%,#FFFFFF_45%,#CFFAFE_100%) rounded-xl'>
+                                <div key={data._id} className='flex text-center my-2 flex-col gap-4 justify-between items-center p-3 shadow-2xl shadow-accent/15 bg-base-200 rounded-2xl px-4'>
                                     <img className='w-full h-80 rounded-lg object-cover' src={data.photoURL} alt="" />
                                     <p className='title-font text-2xl'>{data.name}</p>
                                     <div className='flex gap-4 items-center'>

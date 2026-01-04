@@ -3,10 +3,10 @@ import googleLogo from '../assets/google.png'
 
 const GoogleLogin = ({onClickAction}) => {
   return (
-    <div onClick={onClickAction} className='flex mx-auto justify-center gap-2 bg-base-400/50 max-h-[40px] px-[20px] py-[10px] rounded-full items-center hover:scale-110 ease-in-out duration-500 backdrop-blur-2xl'>
-      <img className='w-[20px] h-[20px]' src={googleLogo} alt="" />
+    <button onClick={onClickAction} className='flex mx-auto justify-center gap-2 bg-base-300/50 max-h-10 px-5 py-2.5 rounded-full items-center hover:border ease-in-out duration-200 cursor-pointer'>
+      <img className='w-5 h-5' src={googleLogo} alt="Google sign-in button" />
       <p className='font-semibold'>Continue with Google</p>
-    </div>
+    </button>
   )
 }
 
