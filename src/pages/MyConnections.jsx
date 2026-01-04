@@ -59,8 +59,8 @@ const MyConnections = () => {
                     <button className='text-base-content font-bold px-4 py-2 rounded-full cursor-pointer bg-base-200' onClick={() => toast.dismiss(t.id)}>
                         Cancel
                     </button>
-                    <button className='text-error-content cursor-pointer bg-error font-bold px-4 py-2 rounded-full' onClick={() => {
-                        deleteRequest(user.email, id)
+                    <button className='text-error-content cursor-pointer bg-error font-bold px-4 py-2 rounded-full' onClick={async() => {
+                        await deleteRequest(user.email, id)
                         toast.dismiss(t.id)
                     }
                     }>
@@ -109,7 +109,6 @@ const MyConnections = () => {
                                 <p className='text-center md:text-xl'>You haven't sent any requests yet.</p>
                                 <DotLottieReact
                                     src="https://lottie.host/3d3bf29d-4afe-4010-b58a-9618df5e0e0c/32c3qQekG9.lottie"
-                                    loop
                                     autoplay
                                 />
                             </div>

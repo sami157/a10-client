@@ -5,6 +5,7 @@ import { AuthContext } from '../provider/AuthProvider'
 import UserAvatar from '../components/UserAvatar'
 import { useRef } from 'react'
 import Logo from './Logo'
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const Navbar = () => {
   const { user, loading } = use(AuthContext);
@@ -29,7 +30,7 @@ const Navbar = () => {
           <NavLink onClick={closeDropdown} to={`/my-connections/${user.email}`} viewTransition>My Connections</NavLink>
         </>
       ) : loading
-          ? <span className="loading loading-dots loading-md"></span>
+        ? <span className="loading loading-dots loading-md"></span>
         :
         (
           <>
@@ -80,7 +81,10 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-2">
-          {user && <UserAvatar small={true} />}
+          {
+            user &&
+              <UserAvatar small={true} />
+          }
           <details ref={dropdownRef} className="dropdown dropdown-end">
             <summary className="btn btn-ghost btn-circle">
               <svg
@@ -116,7 +120,8 @@ const Navbar = () => {
           {themeToggle}
         </div>
         <div className="flex gap-4 items-center">
-          {user ? <UserAvatar small={true} /> : null}
+          {
+          user && <UserAvatar small={true}/>}
           {authLinks}
         </div>
       </div>
