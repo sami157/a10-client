@@ -25,4 +25,4 @@ StudyMate is a platform that helps students find compatible study partners based
 - **Swiper** (for hero/banner slider)
 - **Axios** (for API calls)
 - **React Hot Toast** (for notifications)
-- **MongoDB + Express** (backend APIs – if applicable in your project)
+- **MongoDB + Express**
