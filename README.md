@@ -1,6 +1,6 @@
 # StudyMate – Find Your Perfect Study Partner
 
-Live Site: **https://study-mate-sami157.surge.sh/**  
+Live Site: **https://study-mate-swart.vercel.app/**  
 
 StudyMate is a platform that helps students find compatible study partners based on subject, experience level, and preferred study mode (Online, In-Person, Hybrid).
 
